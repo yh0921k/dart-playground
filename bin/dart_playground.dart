@@ -1,17 +1,51 @@
 void main(List<String> arguments) {
-  final String name = "Dart";
-  // name = "Flutter"; // final 변수는 선언한 이후 값을 변경하지 못함
+  // operator
+  int number = 2;
+  print(number++);
+  print(++number);
 
-  const int age = 10;
-  // age = 20; // const 변수는 선언한 이후 값을 변경하지 못함
+  double anotherNumber = 4.0;
+  anotherNumber += 5;
+  print(anotherNumber);
 
-  // final, const는 타입 생략 가능
-  final flutter = "Flutter";
-  const hour = 20;
+  anotherNumber -= 3;
+  print(anotherNumber);
 
-  final DateTime now = DateTime.now();
-  // const DateTime now = DateTime.now(); // Error: const는 빌드 시간에 값을 알고 있어야 하며, DateTime.now()는 런타임에 해당 값을 알 수 있음
-  print(now);
+  anotherNumber *= 2;
+  print(anotherNumber);
+
+  anotherNumber /= 2;
+  print(anotherNumber);
+
+  printLine(true);
+
+  // null
+  double? nullableNumber = 4.0;
+  print(nullableNumber);
+
+  nullableNumber = 2.0;
+  print(nullableNumber);
+
+  nullableNumber = null;
+  print(nullableNumber);
+
+  nullableNumber ??= 3.0; // 값이 null이면 오른쪽 값을 사용하고, null이 아닐 경우 기존 값 사용
+  print(nullableNumber);
+
+  printLine(true);
+
+  // 비교
+  print(anotherNumber == nullableNumber);
+
+  // 타입 비교
+  print(nullableNumber is double);
+  print(nullableNumber is! int);
+
+  printLine(true);
+
+  // 논리
+  bool result = 12 > 10 && 1 > 0;
+  print(result);
 }
 
 void printLine(bool addEmptyLine) {
