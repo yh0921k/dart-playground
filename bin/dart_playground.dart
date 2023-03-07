@@ -1,18 +1,24 @@
 void main(List<String> arguments) {
-  // Set
-  final Set<String> names = {"Dart", "Java", "Flutter", "Dart"};
-  print(names);
+  // if
+  int number = 3;
+  if(number % 2 == 0) {
+    print("Even");
+  } else {
+    print("Odd");
+  }
+  printLine(true);
 
-  // add
-  names.add("Javascript");
-  print(names);
-
-  // remove
-  names.remove("Flutter");
-  print(names);
-
-  // contains
-  print(names.contains("Java"));
+  // switch
+  switch(number % 2) {
+    case 0:
+      print("Even");
+      break;
+    case 1:
+      print("Odd");
+      break;
+    default:
+      print("Default");
+  }
 }
 
 void printLine(bool addEmptyLine) {
