@@ -1,38 +1,18 @@
 void main(List<String> arguments) {
-  // Map
-  Map<String, String> dictionary = {
-    "Dart" : "다트",
-    "Flutter" : "플러터",
-    "Java" : "자바"
-  };
-  print(dictionary);
-  printLine(true);
+  // Set
+  final Set<String> names = {"Dart", "Java", "Flutter", "Dart"};
+  print(names);
 
   // add
-  dictionary["Typescript"] = "타입스크립트";
-
-  // addAll
-  Map<String, String> another = {
-    'Javascript' : "자바스크립트"
-  };
-  dictionary.addAll(another);
-  print(dictionary);
-
-  // get by key
-  print(dictionary["Dart"]);
-
-  // modify
-  dictionary['Dart'] = '다트(Dart)';
-  print(dictionary);
-  printLine(true);
+  names.add("Javascript");
+  print(names);
 
   // remove
-  dictionary.remove("Dart");
-  print(dictionary);
+  names.remove("Flutter");
+  print(names);
 
-  // get keys, values
-  print(dictionary.keys);
-  print(dictionary.values);
+  // contains
+  print(names.contains("Java"));
 }
 
 void printLine(bool addEmptyLine) {
