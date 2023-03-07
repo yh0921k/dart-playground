@@ -1,51 +1,30 @@
 void main(List<String> arguments) {
-  // operator
-  int number = 2;
-  print(number++);
-  print(++number);
-
-  double anotherNumber = 4.0;
-  anotherNumber += 5;
-  print(anotherNumber);
-
-  anotherNumber -= 3;
-  print(anotherNumber);
-
-  anotherNumber *= 2;
-  print(anotherNumber);
-
-  anotherNumber /= 2;
-  print(anotherNumber);
-
+  // List
+  // List<String> name = ["A", "B", "C", 4]; // Error
+  List<String> names = ["A", "B", "C"];
+  List<int> numbers = [1, 2, 3, 4, 5];
+  print(names);
+  print(numbers);
+  
   printLine(true);
 
-  // null
-  double? nullableNumber = 4.0;
-  print(nullableNumber);
+  // index
+  print(names[0]);
+  // print(names[4]); // Error
 
-  nullableNumber = 2.0;
-  print(nullableNumber);
+  // length
+  print(names.length);
 
-  nullableNumber = null;
-  print(nullableNumber);
+  // add
+  names.add("D");
+  print(names);
 
-  nullableNumber ??= 3.0; // 값이 null이면 오른쪽 값을 사용하고, null이 아닐 경우 기존 값 사용
-  print(nullableNumber);
+  // remove
+  names.remove("C");
+  print(names);
 
-  printLine(true);
-
-  // 비교
-  print(anotherNumber == nullableNumber);
-
-  // 타입 비교
-  print(nullableNumber is double);
-  print(nullableNumber is! int);
-
-  printLine(true);
-
-  // 논리
-  bool result = 12 > 10 && 1 > 0;
-  print(result);
+  // indexOf
+  print(names.indexOf("B"));
 }
 
 void printLine(bool addEmptyLine) {
