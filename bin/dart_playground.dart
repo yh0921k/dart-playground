@@ -1,27 +1,34 @@
 void main(List<String> arguments) {
-  Operation operation = add;
-  print(operation(1, 2, 3));
+  // new 생략가능
+  Developer flutterDeveloper = Developer("FlutterDeveloper", ["Dart", "Flutter"]);
+  flutterDeveloper.hello();
+  flutterDeveloper.saySkills();
 
-  operation = subtract;
-  print(subtract(10, 9, 1));
   printLine(true);
 
-  // 사용예시
-  int result = calculate(30, 40, 50, add);
-  print(result);
+  Developer springDeveloper = Developer.fromList(["SpringDeveloper", ["Java", "Spring"]]);
+  springDeveloper.hello();
+  springDeveloper.saySkills();
 }
 
-typedef Operation = int Function(int x, int y, int z);
+class Developer {
+  String name;
+  List<String> skills;
 
-// add
-int add(int x, int y, int z) => x + y + z;
+  // constructor
+  // Developer(String name, List<String> skills): this.name = name, this.skills = skills;
+  Developer(this.name, this.skills);
 
-// subtract
-int subtract(int x, int y, int z) => x - y - z;
+  // named constructor
+  Developer.fromList(List values): name = values[0], skills = values[1];
 
-// calculate
-int calculate(int x, int y, int z, Operation operation) {
-  return operation(x, y, z);
+  void hello() {
+    print("안녕하세요. $name 입니다.");
+  }
+
+  void saySkills() {
+    print("저는 ${skills.join(', ')}을(를) 사용할 수 있습니다.");
+  }
 }
 
 void printLine(bool addEmptyLine) {
