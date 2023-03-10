@@ -1,50 +1,43 @@
 void main(List<String> arguments) {
-  _Developer flutterDeveloper = _Developer("FlutterDeveloper", ["Dart", "Flutter"]);
-
-  _Developer springDeveloper = _Developer.fromList([
-    "SpringDeveloper",
-    ["Java", "Spring"]
-  ]);
-
-  print(flutterDeveloper.firstSkill);
-  print(springDeveloper.firstSkill);
+  printLine(false);
+  Person dart = Person(name: 'Dart', age: 5);
+  dart.sayName();
+  dart.sayAge();
 
   printLine(true);
-  flutterDeveloper.firstSkill = '자바';
-  print(flutterDeveloper.firstSkill);
+  Student java = Student('java', 30, 'JAVA0001');
+  java.sayName();
+  java.sayAge();
+  java.sayStudentNumber();
+
+  // Type Comparison
+  print(dart is Student);
+  print(java is Person);
+  print(java is Student);
 }
 
-class _Developer {
+class Person {
   String name;
-  List<String> skills;
+  int age;
 
-  _Developer(this.name, this.skills);
+  Person({required this.name, required this.age});
 
-  _Developer.fromList(List values)
-      : name = values[0],
-        skills = values[1];
-
-  void hello() {
-    print("안녕하세요. $name 입니다.");
+  void sayName() {
+    print("Hello, I'm $name");
   }
 
-  void saySkills() {
-    print("저는 ${skills.join(', ')}을(를) 사용할 수 있습니다.");
+  void sayAge() {
+    print("My age is $age");
   }
+}
 
-  // getter
-  // 일반적인 getFirstSkill() 형태로 구현할 수 있지만, 뉘앙스가 다름
-  // getter의 경우 단순 값 조회
-  // 메서드의 경우 특정 기능을 수행한 후 값 조회
-  String get firstSkill {
-    return skills[0];
-  }
+class Student extends Person {
+  String studentNumber;
 
-  // setter(무조건 하나의 파라미터만 허용 - '=' 연산자 기준 오른쪽에 명시된 값을 받기 위함)
-  // final을 사용하면 값을 바꿀 수 없음(리스트안의 요소는 변경 가능, 리스트 자체는 불가능)
-  // 즉, final을 사용하면 값을 변경 불가능하게 만들어 setter를 사용할 수 없음
-  set firstSkill(String name) {
-    skills[0] = name;
+  Student(String name, int age, this.studentNumber) : super(name: name, age: age);
+
+  void sayStudentNumber() {
+    print("My student number is $studentNumber");
   }
 }
 
