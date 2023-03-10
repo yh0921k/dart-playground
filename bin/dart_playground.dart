@@ -1,30 +1,33 @@
 void main(List<String> arguments) {
-  printLine(true);
-  Employee dart = Employee('Dart');
-  Employee java = Employee('java');
+  Student student = Student('Dart');
+  student.sayName();
 
-  Employee.building = 'Factory';
-  dart.printNameAndBuilding();
-  java.printNameAndBuilding();
-  Employee.printBuilding();
+  printLine(true);
+  print(student is Student);
+  print(student is PersonInterface);
+
 }
 
-class Employee {
-  // 인스턴스가 아닌, 클래스에 귀속되는 변수
-  static String? building;
+// interface : abstract 키워드를 붙여 인스턴스화를 막을 수 있음
+abstract class PersonInterface {
+  String name;
 
-  final String name;
+  PersonInterface(this.name);
 
-  Employee(this.name);
+  void sayName(); // abstract 클래스는 함수 몸체를 지울 수 있음
+}
 
-  void printNameAndBuilding() {
-    print("My name is $name");
-    print("I'm working in $building");
+class Student implements PersonInterface {
+  @override
+  String name;
+
+  Student(this.name);
+
+  @override
+  void sayName() {
+    print("I'm $name");
   }
 
-  static void printBuilding() {
-    print("We are working in $building");
-  }
 }
 
 void printLine(bool addEmptyLine) {
