@@ -1,36 +1,25 @@
 void main(List<String> arguments) {
-  // new 생략가능
-  // 기본 생성자에는 const를 사용할 수 있는데, 이는 const로 선언할 수 있는 변수들을 이용한 생성자(날짜, 시간과 같이 빌드타임에 값을 알 수 없는 경우 파라미터로 사용할 수 없음)를 의미
-  // const 생성자는 플러터에서 약간의 효율을 올려줌(추후 플러터에서 학습)
-  Developer flutterDeveloper = const Developer("FlutterDeveloper", ["Dart", "Flutter"]);
-  Developer flutterDeveloper2 = const Developer("FlutterDeveloper", ["Dart", "Flutter"]);
-  flutterDeveloper.hello();
-  flutterDeveloper.saySkills();
-
-  printLine(true);
+  Developer flutterDeveloper = Developer("FlutterDeveloper", ["Dart", "Flutter"]);
 
   Developer springDeveloper = Developer.fromList([
     "SpringDeveloper",
     ["Java", "Spring"]
   ]);
-  springDeveloper.hello();
-  springDeveloper.saySkills();
 
-  // springDeveloper.name = "NestJSDeveloper"; // Error
+  print(flutterDeveloper.firstSkill);
+  print(springDeveloper.firstSkill);
 
   printLine(true);
-  print(flutterDeveloper == flutterDeveloper2);
+  flutterDeveloper.firstSkill = '자바';
+  print(flutterDeveloper.firstSkill);
 }
 
 class Developer {
-  final String name;
-  final List<String> skills;
+  String name;
+  List<String> skills;
 
-  // constructor
-  // Developer(String name, List<String> skills): this.name = name, this.skills = skills;
-  const Developer(this.name, this.skills);
+  Developer(this.name, this.skills);
 
-  // named constructor
   Developer.fromList(List values)
       : name = values[0],
         skills = values[1];
@@ -41,6 +30,21 @@ class Developer {
 
   void saySkills() {
     print("저는 ${skills.join(', ')}을(를) 사용할 수 있습니다.");
+  }
+
+  // getter
+  // 일반적인 getFirstSkill() 형태로 구현할 수 있지만, 뉘앙스가 다름
+  // getter의 경우 단순 값 조회
+  // 메서드의 경우 특정 기능을 수행한 후 값 조회
+  String get firstSkill {
+    return skills[0];
+  }
+
+  // setter(무조건 하나의 파라미터만 허용 - '=' 연산자 기준 오른쪽에 명시된 값을 받기 위함)
+  // final을 사용하면 값을 바꿀 수 없음(리스트안의 요소는 변경 가능, 리스트 자체는 불가능)
+  // 즉, final을 사용하면 값을 변경 불가능하게 만들어 setter를 사용할 수 없음
+  set firstSkill(String name) {
+    skills[0] = name;
   }
 }
 
