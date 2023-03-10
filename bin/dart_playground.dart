@@ -1,7 +1,7 @@
 void main(List<String> arguments) {
-  Developer flutterDeveloper = Developer("FlutterDeveloper", ["Dart", "Flutter"]);
+  _Developer flutterDeveloper = _Developer("FlutterDeveloper", ["Dart", "Flutter"]);
 
-  Developer springDeveloper = Developer.fromList([
+  _Developer springDeveloper = _Developer.fromList([
     "SpringDeveloper",
     ["Java", "Spring"]
   ]);
@@ -14,13 +14,13 @@ void main(List<String> arguments) {
   print(flutterDeveloper.firstSkill);
 }
 
-class Developer {
+class _Developer {
   String name;
   List<String> skills;
 
-  Developer(this.name, this.skills);
+  _Developer(this.name, this.skills);
 
-  Developer.fromList(List values)
+  _Developer.fromList(List values)
       : name = values[0],
         skills = values[1];
 
