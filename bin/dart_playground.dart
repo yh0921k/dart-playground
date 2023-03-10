@@ -1,43 +1,30 @@
 void main(List<String> arguments) {
-  printLine(false);
-  Person dart = Person(name: 'Dart', age: 5);
-  dart.sayName();
-  dart.sayAge();
+  printLine(true);
+  TimesTwo timesTwo = TimesTwo(2);
+  print(timesTwo.calculate());
 
   printLine(true);
-  Student java = Student('java', 30, 'JAVA0001');
-  java.sayName();
-  java.sayAge();
-  java.sayStudentNumber();
-
-  // Type Comparison
-  print(dart is Student);
-  print(java is Person);
-  print(java is Student);
+  TimesFour timesFour = TimesFour(2);
+  print(timesFour.calculate());
 }
 
-class Person {
-  String name;
-  int age;
+class TimesTwo {
+  final int number;
 
-  Person({required this.name, required this.age});
+  TimesTwo(this.number);
 
-  void sayName() {
-    print("Hello, I'm $name");
-  }
-
-  void sayAge() {
-    print("My age is $age");
+  int calculate() {
+    return number * 2;
   }
 }
 
-class Student extends Person {
-  String studentNumber;
+class TimesFour extends TimesTwo {
+  TimesFour(int number) : super(number);
 
-  Student(String name, int age, this.studentNumber) : super(name: name, age: age);
-
-  void sayStudentNumber() {
-    print("My student number is $studentNumber");
+  @override
+  int calculate() {
+    // return number * 4;
+    return super.calculate() * 2;
   }
 }
 
