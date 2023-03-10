@@ -1,30 +1,29 @@
 void main(List<String> arguments) {
   printLine(true);
-  TimesTwo timesTwo = TimesTwo(2);
-  print(timesTwo.calculate());
+  Employee dart = Employee('Dart');
+  Employee java = Employee('java');
 
-  printLine(true);
-  TimesFour timesFour = TimesFour(2);
-  print(timesFour.calculate());
+  Employee.building = 'Factory';
+  dart.printNameAndBuilding();
+  java.printNameAndBuilding();
+  Employee.printBuilding();
 }
 
-class TimesTwo {
-  final int number;
+class Employee {
+  // 인스턴스가 아닌, 클래스에 귀속되는 변수
+  static String? building;
 
-  TimesTwo(this.number);
+  final String name;
 
-  int calculate() {
-    return number * 2;
+  Employee(this.name);
+
+  void printNameAndBuilding() {
+    print("My name is $name");
+    print("I'm working in $building");
   }
-}
 
-class TimesFour extends TimesTwo {
-  TimesFour(int number) : super(number);
-
-  @override
-  int calculate() {
-    // return number * 4;
-    return super.calculate() * 2;
+  static void printBuilding() {
+    print("We are working in $building");
   }
 }
 
