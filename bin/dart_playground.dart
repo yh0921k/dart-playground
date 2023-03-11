@@ -1,23 +1,22 @@
 void main(List<String> arguments) {
-  Student<String> dart = Student('A0001', 'Dart');
-  dart.printStudentNumberType();
+  List<String> names = ['Dart', 'Java', 'Flutter', 'Spring', 'Java'];
+  print(names);
+  print(names.asMap()); // Key로 인덱스 바인딩
+  print(names.toSet()); // 중복 제거
+  printLine(true);
 
-  Student<int> java = Student(1000, 'Java');
-  java.printStudentNumberType();
+  Map namesMap = names.asMap();
+  print(namesMap.keys); // Iterable
+  print(namesMap.values); // Iterable
+  printLine(true);
+
+  // Iterable을 List로 변환
+  print(namesMap.keys.toList());
+  printLine(true);
+
+  Set namesSet = Set.from(names);
+  print(namesSet);
 }
-
-// generic - 타입을 외부에서 받을때 사용
-class Student<T> {
-  final T studentNumber;
-  final String name;
-
-  Student(this.studentNumber, this.name);
-
-  void printStudentNumberType() {
-    print(studentNumber.runtimeType);
-  }
-}
-
 
 void printLine(bool addEmptyLine) {
   if (addEmptyLine) {
