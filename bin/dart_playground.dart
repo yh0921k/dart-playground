@@ -1,21 +1,15 @@
 void main(List<String> arguments) {
-  List<String> names = ['Dart', 'Java', 'Flutter', 'Spring', 'Java'];
-  print(names);
-  print(names.asMap()); // Key로 인덱스 바인딩
-  print(names.toSet()); // 중복 제거
+  List<String> names = ['Dart', 'Java', 'Flutter', 'Spring'];
+  
+  List<String> addPrefixNames = names.map((name) => "Name : $name").toList();
+  print(addPrefixNames);
+  print(names == addPrefixNames);
   printLine(true);
 
-  Map namesMap = names.asMap();
-  print(namesMap.keys); // Iterable
-  print(namesMap.values); // Iterable
-  printLine(true);
+  String numbers = '13579';
+  final parsed = numbers.split('').map((number) => '$number.jpg');
+  print(parsed);
 
-  // Iterable을 List로 변환
-  print(namesMap.keys.toList());
-  printLine(true);
-
-  Set namesSet = Set.from(names);
-  print(namesSet);
 }
 
 void printLine(bool addEmptyLine) {
