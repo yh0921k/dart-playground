@@ -1,13 +1,11 @@
 void main(List<String> arguments) {
   List<int> numbers = [1, 3, 5, 7, 9];
-  final result = numbers.reduce((prev, next) => prev + next);
+  final result = numbers.fold<int>(0, (previousValue, element) => previousValue + element);
   print(result);
 
-  List<String> words = ['Hello, ', "I'm ", 'Dart'];
-  final sentence = words.reduce((value, element) => value + element);
-  print(sentence);
-
-  // final length = words.reduce((value, element) => value.length + element.length); // Error: 반환타입이 String이어야함
+  List<String> words = ["Hello, ", "I'm ", "Dart"];
+  final count = words.fold<int>(0, (previousValue, element) => previousValue + element.length);
+  print(count);
 }
 
 void printLine(bool addEmptyLine) {
