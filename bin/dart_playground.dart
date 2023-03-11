@@ -1,11 +1,12 @@
 void main(List<String> arguments) {
-  List<int> numbers = [1, 3, 5, 7, 9];
-  final result = numbers.fold<int>(0, (previousValue, element) => previousValue + element);
-  print(result);
+  List<int> even = [2, 4, 6, 8, 10];
+  List<int> odd = [1, 3, 5, 7, 9];
 
-  List<String> words = ["Hello, ", "I'm ", "Dart"];
-  final count = words.fold<int>(0, (previousValue, element) => previousValue + element.length);
-  print(count);
+  // cascading operator
+  final result = [...even, ...odd];
+  print(result);
+  print(even == [...even]);
+
 }
 
 void printLine(bool addEmptyLine) {
