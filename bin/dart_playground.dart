@@ -1,14 +1,13 @@
 void main(List<String> arguments) {
-  List<Map<String, String>> names = [
-    {'name': 'Dart', 'group': 'Frontend'},
-    {'name': 'Java', 'group': 'Backend'},
-    {'name': 'Flutter', 'group': 'Frontend'}
-  ];
-  print(names);
+  List<int> numbers = [1, 3, 5, 7, 9];
+  final result = numbers.reduce((prev, next) => prev + next);
+  print(result);
 
-  // where
-  final frontend = names.where((element) => element['group'] == 'Frontend').toList();
-  print(frontend);
+  List<String> words = ['Hello, ', "I'm ", 'Dart'];
+  final sentence = words.reduce((value, element) => value + element);
+  print(sentence);
+
+  // final length = words.reduce((value, element) => value.length + element.length); // Error: 반환타입이 String이어야함
 }
 
 void printLine(bool addEmptyLine) {
