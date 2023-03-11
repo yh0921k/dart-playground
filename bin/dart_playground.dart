@@ -1,12 +1,8 @@
 void main(List<String> arguments) {
-  Map<String, String> grades = {'A': '95', 'B': '90', 'C': '85'};
-  final result = grades.map((key, value) => MapEntry(key, '점수: $value'));
-  print(result);
+  Set names = {'Dart', 'Java', 'Spring', 'Flutter'};
 
-  final keys = grades.keys.toList();
-  final values = grades.values.map((value) => '정수: $value').toList();
-  print(keys);
-  print(values);
+  final addPrefixNames = names.map((name) => 'Name: $name').toSet();
+  print(addPrefixNames);
 }
 
 void printLine(bool addEmptyLine) {
