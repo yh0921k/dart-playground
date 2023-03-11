@@ -1,8 +1,14 @@
 void main(List<String> arguments) {
-  Set names = {'Dart', 'Java', 'Spring', 'Flutter'};
+  List<Map<String, String>> names = [
+    {'name': 'Dart', 'group': 'Frontend'},
+    {'name': 'Java', 'group': 'Backend'},
+    {'name': 'Flutter', 'group': 'Frontend'}
+  ];
+  print(names);
 
-  final addPrefixNames = names.map((name) => 'Name: $name').toSet();
-  print(addPrefixNames);
+  // where
+  final frontend = names.where((element) => element['group'] == 'Frontend').toList();
+  print(frontend);
 }
 
 void printLine(bool addEmptyLine) {
