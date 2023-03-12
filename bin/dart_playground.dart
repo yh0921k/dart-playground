@@ -1,28 +1,23 @@
 void main(List<String> arguments) {
-  Operation operation = add;
-  print(operation(1, 2, 3));
+  Student<String> dart = Student('A0001', 'Dart');
+  dart.printStudentNumberType();
 
-  operation = subtract;
-  print(subtract(10, 9, 1));
-  printLine(true);
-
-  // 사용예시
-  int result = calculate(30, 40, 50, add);
-  print(result);
+  Student<int> java = Student(1000, 'Java');
+  java.printStudentNumberType();
 }
 
-typedef Operation = int Function(int x, int y, int z);
+// generic - 타입을 외부에서 받을때 사용
+class Student<T> {
+  final T studentNumber;
+  final String name;
 
-// add
-int add(int x, int y, int z) => x + y + z;
+  Student(this.studentNumber, this.name);
 
-// subtract
-int subtract(int x, int y, int z) => x - y - z;
-
-// calculate
-int calculate(int x, int y, int z, Operation operation) {
-  return operation(x, y, z);
+  void printStudentNumberType() {
+    print(studentNumber.runtimeType);
+  }
 }
+
 
 void printLine(bool addEmptyLine) {
   if (addEmptyLine) {
