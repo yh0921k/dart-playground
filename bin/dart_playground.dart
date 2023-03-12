@@ -1,37 +1,22 @@
-
+import 'dart:async';
 
 main(List<String> arguments) async {
-  // 아래와 같은 동기 로직은 절대 순서가 변경될 일이 없음(코드 생략)
-  // addNumbersSync(1, 1);
-  // addNumbersSync(2, 2);
-  // printLine(true);
+  final controller = StreamController();
+  // final stream = controller.stream; // 기본적으로 한 번 리스닝을 할 수 있는 스트림이 생김
+  final stream = controller.stream.asBroadcastStream(); // 여러 번 리스닝을 할 수 있는 스트림 생성
 
-  // Future - 미래에 받아올 값
-  Future<String> name = Future.value('Dart');
-  Future<int> number = Future.value(1);
+  final streamListener1 = stream.where((event) => event % 2 == 1).listen((event) {
+    print("Listener1 : $event");
+  });
 
-  // delayed()
-  // 첫 번째 파라미터는 지연 기간
-  // 두 번째 파라미터는 지연 시간이 지난 후 실행할 함수
-  // print('함수 시작');
-  // Future.delayed(Duration(seconds: 2), () => print('Delay 끝'));
-
-  // await은 Future를 리턴해야함
-  printLine(true);
-  final result1 = await addNumbers(1, 1);
-  final result2 = await addNumbers(2, 2);
-  print(result1 + result2);
-}
-
-Future<int> addNumbers(int number1, int number2) async {
-  print("계산시작: $number1 + $number2");
-
-  // 서버 시뮬레이션
-  final result = await Future.delayed(Duration(seconds: 2), () => number1 + number2);
-
-  print("계산완료: $number1 + $number2 = $result");
-
-  return result;
+  final streamListener2 = stream.where((event) => event % 2 == 0).listen((event) {
+    print("Listener2 : $event");
+  });
+  controller.sink.add(1);
+  controller.sink.add(2);
+  controller.sink.add(3);
+  controller.sink.add(4);
+  controller.sink.add(5);
 }
 
 void printLine(bool addEmptyLine) {
