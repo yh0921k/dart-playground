@@ -21,11 +21,11 @@ void main(List<String> arguments) {
   addNumbers(2, 2);
 }
 
-void addNumbers(int number1, int number2) {
+void addNumbers(int number1, int number2) async {
   print("계산시작: $number1 + $number2");
 
   // 서버 시뮬레이션
-  Future.delayed(Duration(seconds: 2), () => print("서버 계산 완료: ${number1 + number2}"));
+  await Future.delayed(Duration(seconds: 2), () => print("서버 계산 완료: ${number1 + number2}"));
 
   print("계산완료: $number1 + $number2");
 }
