@@ -1,44 +1,33 @@
+
+
 void main(List<String> arguments) {
-  final List<Map<String, String>> data = [
-    {'Name': 'Dart', 'Age': '5'},
-    {'Name': 'Java', 'Age': '30'},
-    {'Name': 'Spring', 'Age': '20'}
-  ];
-  print(data);
+  // 아래와 같은 동기 로직은 절대 순서가 변경될 일이 없음(코드 생략)
+  // addNumbersSync(1, 1);
+  // addNumbersSync(2, 2);
+  // printLine(true);
 
-  // 프론트엔드는 어떤 형식의 데이터를 받을지 알 수 없어 아래와 같은 구조화가 필수
-  // 실제 각각의 Map 데이터에는 name, age 속성이 있는지 모르기 때문에 '!'를 명시하여 해당 속성이 있다는 것을 강제
-  final List<Person> people = data.map((e) => Person(name: e['Name']!, age: e['Age']!)).toList();
-  print(people);
+  // Future - 미래에 받아올 값
+  Future<String> name = Future.value('Dart');
+  Future<int> number = Future.value(1);
 
-  printLine(true);
-  for (Person person in people) {
-    print(person.name);
-  }
+  // delayed()
+  // 첫 번째 파라미터는 지연 기간
+  // 두 번째 파라미터는 지연 시간이 지난 후 실행할 함수
+  // print('함수 시작');
+  // Future.delayed(Duration(seconds: 2), () => print('Delay 끝'));
 
   printLine(true);
-  final parsedPeople = people.where((person) => int.parse(person.age) >= 10);
-  print(parsedPeople);
-
-  // Functional Programming
-  printLine(true);
-  final result = data
-      .map((e) => Person(name: e['Name']!, age: e['Age']!))
-      .where((element) => int.parse(element.age) >= 10)
-      .fold(0, (previousValue, element) => previousValue + element.name.length);
-  print(result);
+  addNumbers(1, 1);
+  addNumbers(2, 2);
 }
 
-class Person {
-  final String name;
-  final String age;
+void addNumbers(int number1, int number2) {
+  print("계산시작: $number1 + $number2");
 
-  Person({required this.name, required this.age});
+  // 서버 시뮬레이션
+  Future.delayed(Duration(seconds: 2), () => print("서버 계산 완료: ${number1 + number2}"));
 
-  @override
-  String toString() {
-    return 'Person(name:$name, age:$age';
-  }
+  print("계산완료: $number1 + $number2");
 }
 
 void printLine(bool addEmptyLine) {
