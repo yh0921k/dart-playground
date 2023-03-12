@@ -18,17 +18,20 @@ main(List<String> arguments) async {
 
   // await은 Future를 리턴해야함
   printLine(true);
-  await addNumbers(1, 1);
-  await addNumbers(2, 2);
+  final result1 = await addNumbers(1, 1);
+  final result2 = await addNumbers(2, 2);
+  print(result1 + result2);
 }
 
-Future<void> addNumbers(int number1, int number2) async {
+Future<int> addNumbers(int number1, int number2) async {
   print("계산시작: $number1 + $number2");
 
   // 서버 시뮬레이션
-  await Future.delayed(Duration(seconds: 2), () => print("서버 계산 완료: ${number1 + number2}"));
+  final result = await Future.delayed(Duration(seconds: 2), () => number1 + number2);
 
-  print("계산완료: $number1 + $number2");
+  print("계산완료: $number1 + $number2 = $result");
+
+  return result;
 }
 
 void printLine(bool addEmptyLine) {
