@@ -1,6 +1,6 @@
 
 
-void main(List<String> arguments) {
+main(List<String> arguments) async {
   // 아래와 같은 동기 로직은 절대 순서가 변경될 일이 없음(코드 생략)
   // addNumbersSync(1, 1);
   // addNumbersSync(2, 2);
@@ -16,12 +16,13 @@ void main(List<String> arguments) {
   // print('함수 시작');
   // Future.delayed(Duration(seconds: 2), () => print('Delay 끝'));
 
+  // await은 Future를 리턴해야함
   printLine(true);
-  addNumbers(1, 1);
-  addNumbers(2, 2);
+  await addNumbers(1, 1);
+  await addNumbers(2, 2);
 }
 
-void addNumbers(int number1, int number2) async {
+Future<void> addNumbers(int number1, int number2) async {
   print("계산시작: $number1 + $number2");
 
   // 서버 시뮬레이션
