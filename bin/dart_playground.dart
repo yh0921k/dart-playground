@@ -34,4 +34,9 @@ main(List<String> arguments) async {
   print(now.isBefore(specificDay));
   print('=' * 20);
 
+  print(now);
+  print(now.add(Duration(hours: 10)));
+  print(now.subtract(Duration(seconds: 20)));
+  print('=' * 20);
+
 }
