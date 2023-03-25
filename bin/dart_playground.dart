@@ -9,4 +9,12 @@ main(List<String> arguments) async {
   print(now.minute);
   print(now.second);
   print(now.millisecond);
+
+  Duration duration = Duration(seconds: 60);
+  print(duration);
+  print(duration.inDays);
+  print(duration.inHours);
+  print(duration.inMinutes);
+  print(duration.inSeconds);
+  print(duration.inMilliseconds);
 }
