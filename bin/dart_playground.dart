@@ -28,6 +28,10 @@ main(List<String> arguments) async {
   print(difference.inDays);
   print(difference.inHours);
   print(difference.inMinutes);
-
   print('=' * 20);
+
+  print(now.isAfter(specificDay));
+  print(now.isBefore(specificDay));
+  print('=' * 20);
+
 }
