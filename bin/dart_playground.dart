@@ -9,6 +9,7 @@ main(List<String> arguments) async {
   print(now.minute);
   print(now.second);
   print(now.millisecond);
+  print('=' * 20);
 
   Duration duration = Duration(seconds: 60);
   print(duration);
@@ -17,4 +18,16 @@ main(List<String> arguments) async {
   print(duration.inMinutes);
   print(duration.inSeconds);
   print(duration.inMilliseconds);
+  print('=' * 20);
+
+  DateTime specificDay = DateTime(2023, 03, 22, 20, 20, 20);
+  print(specificDay);
+
+  final difference = now.difference(specificDay);
+  print(difference);
+  print(difference.inDays);
+  print(difference.inHours);
+  print(difference.inMinutes);
+
+  print('=' * 20);
 }
