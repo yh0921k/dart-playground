@@ -1,26 +1,42 @@
 main(List<String> arguments) async {
-  playAllStream().listen((event) {
-    print(event);
-  });
-}
+  DateTime now = DateTime.now();
 
-Stream<int> playAllStream() async* {
-  yield* calculate(1); // yield*은 해당하는 스트림의 모든 값이 리턴될 때까지 기다림(Future의 await과 비슷함)
-  yield* calculate(1000);
-}
+  print(now);
+  print(now.year);
+  print(now.month);
+  print(now.day);
+  print(now.hour);
+  print(now.minute);
+  print(now.second);
+  print(now.millisecond);
+  print('=' * 20);
 
-Stream<int> calculate(int number) async* {
-  for (int i = 0; i < 5; i++) {
-    yield i * number;
-    
-    await Future.delayed(Duration(seconds: 1));
-  }
-}
+  Duration duration = Duration(seconds: 60);
+  print(duration);
+  print(duration.inDays);
+  print(duration.inHours);
+  print(duration.inMinutes);
+  print(duration.inSeconds);
+  print(duration.inMilliseconds);
+  print('=' * 20);
 
-void printLine(bool addEmptyLine) {
-  if (addEmptyLine) {
-    print("");
-  }
+  DateTime specificDay = DateTime(2023, 03, 22, 20, 20, 20);
+  print(specificDay);
 
-  print("=" * 20);
+  final difference = now.difference(specificDay);
+  print(difference);
+  print(difference.inDays);
+  print(difference.inHours);
+  print(difference.inMinutes);
+  print('=' * 20);
+
+  print(now.isAfter(specificDay));
+  print(now.isBefore(specificDay));
+  print('=' * 20);
+
+  print(now);
+  print(now.add(Duration(hours: 10)));
+  print(now.subtract(Duration(seconds: 20)));
+  print('=' * 20);
+
 }
