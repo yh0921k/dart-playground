@@ -1,42 +1,26 @@
 main(List<String> arguments) async {
-  DateTime now = DateTime.now();
+  final result = nameAndAge({'name': 'yh', 'age': 32});
+  print(result);
+  print(result[0]);
+  print(result[0].length); // IDE의 자동완성 도움을 받을 수 없음
 
-  print(now);
-  print(now.year);
-  print(now.month);
-  print(now.day);
-  print(now.hour);
-  print(now.minute);
-  print(now.second);
-  print(now.millisecond);
-  print('=' * 20);
+  print("=" * 20);
 
-  Duration duration = Duration(seconds: 60);
-  print(duration);
-  print(duration.inDays);
-  print(duration.inHours);
-  print(duration.inMinutes);
-  print(duration.inSeconds);
-  print(duration.inMilliseconds);
-  print('=' * 20);
+  final resultInRecord = nameAndAgeInRecord({'name': 'yh', 'age': 32});
+  print(resultInRecord);
+  print(resultInRecord.$1);
+  print(resultInRecord.$1.length);
+  print(resultInRecord.$2.isEven);
+}
 
-  DateTime specificDay = DateTime(2023, 03, 22, 20, 20, 20);
-  print(specificDay);
+// 아래 예제는 리스트 형태로 반환이 이루어지기 때문에 타입을 한가지로만 정의할 수 있음
+nameAndAge(Map<String, dynamic> json) {
+  return [json['name'], json['age']];
+}
 
-  final difference = now.difference(specificDay);
-  print(difference);
-  print(difference.inDays);
-  print(difference.inHours);
-  print(difference.inMinutes);
-  print('=' * 20);
-
-  print(now.isAfter(specificDay));
-  print(now.isBefore(specificDay));
-  print('=' * 20);
-
-  print(now);
-  print(now.add(Duration(hours: 10)));
-  print(now.subtract(Duration(seconds: 20)));
-  print('=' * 20);
-
+// Record
+// - 리스트를 좀 더 규격화해서 표현할 수 있음(Tuple)
+// 타입의 순서 보장
+(String, int) nameAndAgeInRecord(Map<String, dynamic> json) {
+  return (json['name'] as String, json['age'] as int);
 }
