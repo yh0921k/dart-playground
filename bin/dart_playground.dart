@@ -1,26 +1,40 @@
 main(List<String> arguments) async {
-  final result = nameAndAge({'name': 'yh', 'age': 32});
-  print(result);
-  print(result[0]);
-  print(result[0].length); // IDE의 자동완성 도움을 받을 수 없음
+  final result = nameAndAges();
+  print(result[0]['name'].length); // IDE의 자동완성 도움을 받지 못함
 
   print("=" * 20);
-
-  final resultInRecord = nameAndAgeInRecord({'name': 'yh', 'age': 32});
-  print(resultInRecord);
-  print(resultInRecord.$1);
-  print(resultInRecord.$1.length);
-  print(resultInRecord.$2.isEven);
+  final resultInRecord = nameAndAgesInRecord();
+  for (final item in resultInRecord) {
+    print(item);
+    print(item.$1);
+    print(item.$2);
+  }
 }
 
-// 아래 예제는 리스트 형태로 반환이 이루어지기 때문에 타입을 한가지로만 정의할 수 있음
-nameAndAge(Map<String, dynamic> json) {
-  return [json['name'], json['age']];
+// name, age를 동시에 어우르는 타입을 지정할 수 없어 dynamic 타입을 사용해야함
+List<Map<String, dynamic>> nameAndAges() {
+  return [
+    {
+      "name": "Dart",
+      "age": 20,
+    },
+    {
+      "name": "Flutter",
+      "age": 15,
+    },
+  ];
 }
 
 // Record
-// - 리스트를 좀 더 규격화해서 표현할 수 있음(Tuple)
-// 타입의 순서 보장
-(String, int) nameAndAgeInRecord(Map<String, dynamic> json) {
-  return (json['name'] as String, json['age'] as int);
+List<(String, int)> nameAndAgesInRecord() {
+  return [
+    (
+        "Dart",
+        20,
+    ),
+    (
+        "Flutter",
+        15,
+    ),
+  ];
 }
