@@ -26,7 +26,7 @@ List<Map<String, dynamic>> nameAndAges() {
 }
 
 // Record
-List<(String, int)> nameAndAgesInRecord() {
+List<(String name, int age)> nameAndAgesInRecord() {
   return [
     (
         "Dart",
