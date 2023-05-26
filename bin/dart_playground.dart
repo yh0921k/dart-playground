@@ -6,8 +6,8 @@ main(List<String> arguments) async {
   final resultInRecord = nameAndAgesInRecord();
   for (final item in resultInRecord) {
     print(item);
-    print(item.$1);
-    print(item.$2);
+    print(item.name);
+    print(item.age);
   }
 }
 
@@ -26,15 +26,15 @@ List<Map<String, dynamic>> nameAndAges() {
 }
 
 // Record
-List<(String name, int age)> nameAndAgesInRecord() {
+List<({String name, int age})> nameAndAgesInRecord() {
   return [
     (
-        "Dart",
-        20,
+        name: 'Dart',
+        age: 20,
     ),
     (
-        "Flutter",
-        15,
+        name: "Flutter",
+        age: 15,
     ),
   ];
 }
