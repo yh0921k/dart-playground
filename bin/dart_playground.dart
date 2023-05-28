@@ -1,27 +1,14 @@
+// Destructuring: 값을 분해한 상태로 받아옴
 main(List<String> arguments) async {
-  final result = nameAndAges();
-  print(result[0]['name'].length); // IDE의 자동완성 도움을 받지 못함
+  final dart = ('Dart', 20);
+  print(dart.$1);
+  print(dart.$2);
 
-  print("=" * 20);
-  final resultInRecord = nameAndAgesInRecord();
-  print(resultInRecord);
-}
+  // final name = dart.$1;
+  // final age = dart.$2
 
-// name, age를 동시에 어우르는 타입을 지정할 수 없어 dynamic 타입을 사용해야함
-List<Map<String, dynamic>> nameAndAges() {
-  return [
-    {
-      "name": "Dart",
-      "age": 20,
-    },
-    {
-      "name": "Flutter",
-      "age": 15,
-    },
-  ];
-}
-
-// Record
-(String name, String group, int age) nameAndAgesInRecord() {
-  return ('Flutter', 'Dart', 20);
+  // Record
+  final (name, age) = ('Dart', 20);
+  print(name);
+  print(age);
 }
