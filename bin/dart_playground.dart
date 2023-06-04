@@ -1,15 +1,11 @@
-// Destructuring: 값을 분해한 상태로 받아옴
+// Pattern Matching
 main(List<String> arguments) async {
-  // Class
-  final language = Language(name: 'Dart', age: 20);
-  final Language(name: languageName, age: languageAge) = language;
-  print(languageName);
-  print(languageAge);
-}
+  // Validation
+  final language = ('Dart', 20);
 
-class Language {
-  final String name;
-  final int age;
+  final (name as String, age as int) = language;
+  // final(name as int, age as int) = language; // 런타임 에러 발생
 
-  Language({required this.name, required this.age});
+  print(name);
+  print(age);
 }
