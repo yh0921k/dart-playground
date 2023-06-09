@@ -1,17 +1,11 @@
-// Pattern Matching
-main(List<String> arguments) async {
-  ifMatcher();
-}
+main(List<String> arguments) async {}
 
-void ifMatcher() {
-  final student = {
-    'name': 'kyh',
-    'age': '32' // 출력없음: int 타입에 맞게 변경해야함
-  };
+// final로 클래스 선언
+// - extends, implements, mixin으로 사용이 불가능
+// - 같은 파일 안에서는 가능
+final class Person {
+  final String name;
+  final int age;
 
-  // 구조분해와 동시에 검증이 필요한 경우
-  if(student case {'name': String name, 'age': int age}) {
-    print(name);
-    print(age);
-  }
+  Person({required this.name, required this.age});
 }
