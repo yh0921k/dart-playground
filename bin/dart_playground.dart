@@ -1,17 +1,14 @@
 main(List<String> arguments) async {}
 
-// sealed로 클래스 선언
-// - abstract 이면서 final인 클래스
-// - 패턴 매칭을 사용할 수 있도록 해줌
-sealed class Person {}
+// Mixin Class
+// 1. mixin은 extends나 with를 사용할 수 없다.
+// - 따라서 mixin 클래스도 마찬가지로 사용 불가능하다.
+// 2. 클래스는 on 키워드를 사용할 수 없다.
+// - 따라서 mixin 클래스도 on 키워드를 사용할 수 없다.
+mixin class AnimalMixin {
+  String bark() {
+    return '멍멍';
+  }
+}
 
-class Student extends Person {}
-
-class Engineer extends Person {}
-
-class Developer extends Person {}
-
-String whoIsHe(Person person) => switch (person) {
-      Student s => '학생',
-      Engineer e => '엔지니어',
-    };
+class Dog with AnimalMixin {}
