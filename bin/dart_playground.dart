@@ -1,42 +1,14 @@
-main(List<String> arguments) async {
-  DateTime now = DateTime.now();
+main(List<String> arguments) async {}
 
-  print(now);
-  print(now.year);
-  print(now.month);
-  print(now.day);
-  print(now.hour);
-  print(now.minute);
-  print(now.second);
-  print(now.millisecond);
-  print('=' * 20);
-
-  Duration duration = Duration(seconds: 60);
-  print(duration);
-  print(duration.inDays);
-  print(duration.inHours);
-  print(duration.inMinutes);
-  print(duration.inSeconds);
-  print(duration.inMilliseconds);
-  print('=' * 20);
-
-  DateTime specificDay = DateTime(2023, 03, 22, 20, 20, 20);
-  print(specificDay);
-
-  final difference = now.difference(specificDay);
-  print(difference);
-  print(difference.inDays);
-  print(difference.inHours);
-  print(difference.inMinutes);
-  print('=' * 20);
-
-  print(now.isAfter(specificDay));
-  print(now.isBefore(specificDay));
-  print('=' * 20);
-
-  print(now);
-  print(now.add(Duration(hours: 10)));
-  print(now.subtract(Duration(seconds: 20)));
-  print('=' * 20);
-
+// Mixin Class
+// 1. mixin은 extends나 with를 사용할 수 없다.
+// - 따라서 mixin 클래스도 마찬가지로 사용 불가능하다.
+// 2. 클래스는 on 키워드를 사용할 수 없다.
+// - 따라서 mixin 클래스도 on 키워드를 사용할 수 없다.
+mixin class AnimalMixin {
+  String bark() {
+    return '멍멍';
+  }
 }
+
+class Dog with AnimalMixin {}
